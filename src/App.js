@@ -1,24 +1,15 @@
-import { createBrowserRouter } from "react-router-dom";
-import FormLayout from "./components/SignInForm/FormLayout.js";
-import Homepage from "./components/HomePage/Homepage.js";
-import { RouterProvider } from "react-router-dom";
-const App = ()=>{
-
-  const appRouter = createBrowserRouter([
-    {
-      path:"/login",
-      element:<FormLayout/>
-    },
-    {
-      path:"/",
-      element:<Homepage/>
-    }
-  ])
-  return(
+import React from "react";
+import Body from "./components/Body";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+const App = () => {
+  return (
     <>
-      <RouterProvider router={appRouter}/>
+      <Provider store={appStore}>
+        <Body />
+      </Provider>
     </>
-  )
-}
+  );
+};
 
 export default App;

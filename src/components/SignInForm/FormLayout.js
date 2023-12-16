@@ -1,4 +1,5 @@
 import SignIn from "../Form/SignIn";
+import Header from "../Header/Header";
 const FormLayout = () => {
   return (
     <>
@@ -9,12 +10,13 @@ const FormLayout = () => {
           alt="Netflix"
         />
         <div className="w-full h-full bg-black absolute top-0 opacity-60"></div>
-        <div className="absolute top-5 w-full h-full">
-          <img
+        <div className="absolute top-0 w-full h-full">
+          {/* <img
             className="w-2/12 h-16 ml-8 opacity-80"
             src="https://davidblaine.com/wp-content/uploads/2017/04/netflix-logo.png"
             alt="Random"
-          />
+          /> */}
+          <Header />
           <SignIn />
         </div>
         <div className="w-full h-38 bg-black opacity-70 absolute bottom-0">

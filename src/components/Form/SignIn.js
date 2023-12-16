@@ -1,10 +1,103 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { ValidationFormSignIn } from "../../utils/Validations/ValidationForm.js";
+import { ValidationFormSignUp } from "../../utils/Validations/ValidationForm.js";
+// import { useNavigate } from "react-router-dom";
+import { auth } from "../../utils/firebase.js";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../utils/UserSlice/userSlice.js";
+import { USER_URL } from "../../utils/URL/url.js";
 
 const SignIn = () => {
   const [isSign, setSignIn] = useState(true);
+  const [ErrorMsg, setErrorMsg] = useState(null);
+  const [NewError, setNewError] = useState(null);
+  // const [action, setAction] = useState("/");
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
   const handleSign = () => {
     setSignIn(!isSign);
   };
+
+  const handleValidation = () => {
+    if (isSign) {
+      const formValidatorSignIn = ValidationFormSignIn(
+        email.current.value,
+        password.current.value
+      );
+      setErrorMsg(formValidatorSignIn);
+      if (ErrorMsg) return;
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {})
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+        });
+    } else {
+      const formValidatorSignUp = ValidationFormSignUp(
+        name.current.value,
+        email.current.value,
+        password.current.value
+      );
+      setNewError(formValidatorSignUp);
+      if (NewError) return;
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // console.log(user);
+          // navigate("/browse");
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: USER_URL,
+          })
+            .then(() => {
+              // Profile update
+              // ...
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              // navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              console.log(error.message);
+            });
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+          // ..
+        });
+    }
+  };
+
   return (
     <>
       <div className=" w-4/12 h-[60%]  mx-auto mt-10 bg-black px-16 py-16 opacity-70">
@@ -14,12 +107,12 @@ const SignIn = () => {
           </h1>
           <form
             className="h-72 flex flex-col justify-evenly items-center"
-            type="GET"
-            action="https://localhost:3000/user"
+            onSubmit={(e) => e.preventDefault()}
           >
             <div>
               {!isSign && (
                 <input
+                  ref={name}
                   className="w-full h-12 rounded-sm indent-3 border border-none outline-none mb-6 text-white bg-slate-600"
                   type="text"
                   name="Name"
@@ -29,6 +122,7 @@ const SignIn = () => {
                 />
               )}
               <input
+                ref={email}
                 className="w-full h-12 rounded-sm indent-3 border border-none outline-none mb-6 text-white bg-slate-600"
                 type="email"
                 name="Email"
@@ -37,6 +131,7 @@ const SignIn = () => {
                 autoComplete="off"
               />
               <input
+                ref={password}
                 className="w-full h-12 rounded-sm indent-3 border-none outline-none text-white bg-slate-600"
                 type="password"
                 name="Password"
@@ -44,7 +139,13 @@ const SignIn = () => {
                 autoComplete="off"
               />
             </div>
-            <button className="w-full p-4 bg-gradient-to-r from-red-900 to-orange-600 filter brightness-200 text-white rounded-md">
+            <p className="text-red-600 font-bold">
+              {isSign ? ErrorMsg : NewError}
+            </p>
+            <button
+              onClick={handleValidation}
+              className="w-full p-4 bg-gradient-to-r from-red-900 to-orange-600 filter brightness-200 text-white rounded-md"
+            >
               {isSign ? "Sign In" : "Sign Up"}
             </button>
           </form>
