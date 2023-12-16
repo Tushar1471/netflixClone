@@ -1,7 +1,5 @@
 import React from "react";
-// import { useFetchTrailer } from "../../hooks/useFetchTrailer";
 import { useFetchMovies } from "../../hooks/useFetchMovies";
-// import VideoBackground from "../layouts/VideoBackground/VideoBackground";
 import Header from "../Header/Header";
 import VideoBackground from "../layouts/VideoBackground/VideoBackground";
 import MovieCards from "../MovieCards/MovieCards";
@@ -9,14 +7,7 @@ import { usePopularMovies } from "../../hooks/usePopularMovies.js";
 import { useTopRated } from "../../hooks/useTopRated.js";
 import { useSelector } from "react-redux";
 import { useUpcomingMovies } from "../../hooks/useUpcomingMovies.js";
-// import { useDispatch } from "react-redux";
-// import {
-//   clearCheckId,
-//   clearTrailer,
-// } from "../../utils/MovieSlice/movieSlice.js";
 const Browse = () => {
-  // useFetchTrailer();
-  // const dispatch = useDispatch();
   useFetchMovies();
   usePopularMovies();
   useTopRated();
@@ -28,12 +19,6 @@ const Browse = () => {
     (upcoming) => upcoming.movies?.nowUpcoming
   );
   const allMovies = useSelector((all) => all.movies?.nowPlayingMovies);
-
-  // const checkId = useSelector((id) => id.movies.checkId);
-  // const playMovie = useSelector((play) => play.movies.nowPlayMovie);
-  // // if (checkId && playMovie === null) return;
-  // if (checkId) dispatch(clearCheckId());
-  // if (playMovie) dispatch(clearTrailer());
   return (
     <>
       <div className="w-full h-[500vh] bg-black">

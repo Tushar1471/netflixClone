@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { ValidationFormSignIn } from "../../utils/Validations/ValidationForm.js";
 import { ValidationFormSignUp } from "../../utils/Validations/ValidationForm.js";
-// import { useNavigate } from "react-router-dom";
 import { auth } from "../../utils/firebase.js";
 import {
   createUserWithEmailAndPassword,
@@ -16,8 +15,6 @@ const SignIn = () => {
   const [isSign, setSignIn] = useState(true);
   const [ErrorMsg, setErrorMsg] = useState(null);
   const [NewError, setNewError] = useState(null);
-  // const [action, setAction] = useState("/");
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -62,15 +59,12 @@ const SignIn = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          // console.log(user);
-          // navigate("/browse");
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: USER_URL,
           })
             .then(() => {
               // Profile update
-              // ...
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
                 addUser({
@@ -80,20 +74,16 @@ const SignIn = () => {
                   photoURL: photoURL,
                 })
               );
-              // navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
-              // ...
               console.log(error.message);
             });
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMsg(errorCode + "-" + errorMessage);
-          // ..
         });
     }
   };

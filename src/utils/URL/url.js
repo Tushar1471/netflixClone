@@ -62,5 +62,3 @@ export const languages = [{
         }
     }]
 }];
-
-// export const price = `Starts at ₹149.Cancel anytime.`;

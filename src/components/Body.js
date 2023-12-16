@@ -4,9 +4,7 @@ import FormLayout from "./SignInForm/FormLayout.js";
 import Homepage from "./HomePage/Homepage.js";
 import Browse from "./BrowseNetflix/Browse.js";
 import LinkCards from "./LinkCards/LinkCards.js";
-// import { useDispatch } from "react-redux";
 const Body = () => {
-  // const dispatch = useDispatch();
   const appRouter = createBrowserRouter([
     {
       path: "/login",

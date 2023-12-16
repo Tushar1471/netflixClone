@@ -1,6 +1,4 @@
-// import React, { useEffect, useState } from "react";
 import { HOMEPAGE_URL, LOGO_URL } from "../../utils/URL/url";
-// import { price } from "../../utils/URL/url";
 import { languages } from "../../utils/URL/url";
 import { useDispatch, useSelector } from "react-redux";
 import { addLanguage } from "../../utils/LanguageSlice/languageSlice";
@@ -20,7 +18,6 @@ const Homepage = () => {
     !languages && handleChange();
   }, []);
   const store = useSelector((store) => store.lang);
-  // console.log(store);
   const {
     signIn,
     description,

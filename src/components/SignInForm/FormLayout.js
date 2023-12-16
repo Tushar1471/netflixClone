@@ -11,11 +11,6 @@ const FormLayout = () => {
         />
         <div className="w-full h-full bg-black absolute top-0 opacity-60"></div>
         <div className="absolute top-0 w-full h-full">
-          {/* <img
-            className="w-2/12 h-16 ml-8 opacity-80"
-            src="https://davidblaine.com/wp-content/uploads/2017/04/netflix-logo.png"
-            alt="Random"
-          /> */}
           <Header />
           <SignIn />
         </div>

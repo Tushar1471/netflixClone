@@ -14,9 +14,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        // console.log(auth);
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
       });

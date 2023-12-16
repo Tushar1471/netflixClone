@@ -11,9 +11,9 @@ const VideoBackground = () => {
   dbTrailer.filter((item) =>
     item.type === "Trailer" ? newArr.push(item) : null
   );
-  // console.log(newArr);
+
   const { key, name } = newArr[2];
-  // console.log(name, key);
+
   return (
     <>
       <div className="w-full bg-blue-200">

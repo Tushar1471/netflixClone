@@ -8,10 +8,8 @@ const LinkCards = () => {
   const data = useSelector((store) => store.movies?.showDetails);
   useFetchDetails(resId);
   if (data === null) return "loading.....";
-  // const { poster_path } = data.belongs_to_collection;
   const { genres, original_title, backdrop_path, poster_path, overview } = data;
   return (
-    // <div>LinkCards</div>
     <>
       {data && (
         <div>
@@ -25,7 +23,6 @@ const LinkCards = () => {
           <div className="w-full h-screen bg-black opacity-70 absolute top-0"></div>
           <div className="flex justify-center">
             <div className="w-11/12 h-screen absolute top-0 flex justify-center items-center p-6 cursor-pointer">
-              {/* <div className="w-5/12 h-80 bg-black"></div> */}
               <div className="w-9/12 h-[100%] shadow-lg">
                 <div className="w-full h-[50%] flex justify-evenly p-1">
                   <Link className="w-3/12 h-full" to={"/browse"}>
@@ -41,7 +38,6 @@ const LinkCards = () => {
                         {original_title}
                       </h1>
                     </div>
-                    {/* <hr /> */}
                     <div className="flex justify-evenly px-2 py-2">
                       {genres.map((item) => (
                         <p

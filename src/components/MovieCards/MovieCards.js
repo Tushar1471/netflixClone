@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Mcard from "../Mcard/Mcard";
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { addId, clearDetails } from "../../utils/MovieSlice/movieSlice";
 

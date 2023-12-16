@@ -49,18 +49,3 @@
 
   #Formik
   -If form containing n no. of fields using formik.
-
-  Dear Akshay Saini and Team,
-
-I hope this message finds you well. I am currently enrolled in the Namaste React course and have been thoroughly enjoying the content provided. I am writing to bring to your attention a concern I encountered while going through Episode 14, the Netflix GPT episode.
-
-During the episode, I noticed that at 03:23:44 when Akshay Sir logged into Netflix officially, contact information was briefly displayed. Given the sensitivity of personal information, especially contact numbers, I would like to kindly request that this information be concealed or edited out from the episode for the privacy and security of the individuals involved.
-
-I understand that oversight can occur, and I appreciate your prompt attention to this matter. Ensuring the privacy and security of everyone involved is crucial, and I trust that you will take the necessary steps to address this concern.
-
-Thank you for your understanding and for providing such valuable content through the Namaste React course. I look forward to continued learning and success with the course.
-
-Best regards,
-
-Tushar Malhotra
-tusharmalhotra589@gmail.com

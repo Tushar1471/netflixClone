@@ -18,7 +18,3 @@ export const ValidationFormSignUp = (name, email, password) => {
     if (!isPasswordValid) return "Password is not valid";
     return null;
 }
-
-
-
-// export const SignUp
