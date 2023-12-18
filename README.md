@@ -49,3 +49,29 @@
 
   #Formik
   -If form containing n no. of fields using formik.
+
+  //Here some things need to store.
+  const data = languages[0]["en"];
+  const [stat, setStatic] = useState(data);
+  const dispatch = useDispatch();
+  useAllLang();
+  const lang = useSelector((item) => item.lang.allLanguages);
+  const handleChange = (e) => {
+  lang &&
+  lang
+  .map((item) => item)
+  .filter((store) => setStatic(store[e.target.value]));
+  };
+  dispatch(addLanguage(stat));
+  useEffect(() => {
+  !languages && handleChange();
+  }, []);
+  const store = useSelector((store) => store.lang);
+  const {
+  signIn,
+  description,
+  priceStatics,
+  memberShipStatics,
+  placeHolder,
+  btnName,
+  } = store.languages[0].homePage;

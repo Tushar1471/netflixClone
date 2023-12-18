@@ -15,8 +15,6 @@ export const options = {
     }
 };
 
-
-
 export const languages = [{
     en: [{
             homePage: {

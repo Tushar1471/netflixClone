@@ -10,8 +10,9 @@ import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/UserSlice/userSlice.js";
 import { USER_URL } from "../../utils/URL/url.js";
-
+import { useTranslation } from "react-i18next";
 const SignIn = () => {
+  const { t } = useTranslation();
   const [isSign, setSignIn] = useState(true);
   const [ErrorMsg, setErrorMsg] = useState(null);
   const [NewError, setNewError] = useState(null);
@@ -42,6 +43,7 @@ const SignIn = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMsg(errorCode + "-" + errorMessage);
+          window.location.reload();
         });
     } else {
       const formValidatorSignUp = ValidationFormSignUp(
@@ -87,13 +89,12 @@ const SignIn = () => {
         });
     }
   };
-
   return (
     <>
       <div className=" w-4/12 h-[60%]  mx-auto mt-10 bg-black px-16 py-16 opacity-70">
         <div className="p-2 ">
           <h1 className="text-white font-sans text-3xl font-semibold mb-1">
-            {isSign ? "Sign In" : "Sign Up"}
+            {isSign ? t("signInHeader") : t("signUpHeader")}
           </h1>
           <form
             className="h-72 flex flex-col justify-evenly items-center"
@@ -106,7 +107,7 @@ const SignIn = () => {
                   className="w-full h-12 rounded-sm indent-3 border border-none outline-none mb-6 text-white bg-slate-600"
                   type="text"
                   name="Name"
-                  placeholder="Enter your Name"
+                  placeholder={t("name")}
                   spellCheck="false"
                   autoComplete="off"
                 />
@@ -116,7 +117,7 @@ const SignIn = () => {
                 className="w-full h-12 rounded-sm indent-3 border border-none outline-none mb-6 text-white bg-slate-600"
                 type="email"
                 name="Email"
-                placeholder="Email or phone number"
+                placeholder={t("ePlaceholder")}
                 spellCheck="false"
                 autoComplete="off"
               />
@@ -125,7 +126,7 @@ const SignIn = () => {
                 className="w-full h-12 rounded-sm indent-3 border-none outline-none text-white bg-slate-600"
                 type="password"
                 name="Password"
-                placeholder="Password"
+                placeholder={t("password")}
                 autoComplete="off"
               />
             </div>
@@ -136,7 +137,7 @@ const SignIn = () => {
               onClick={handleValidation}
               className="w-full p-4 bg-gradient-to-r from-red-900 to-orange-600 filter brightness-200 text-white rounded-md"
             >
-              {isSign ? "Sign In" : "Sign Up"}
+              {isSign ? t("inBtn") : t("upBtn")}
             </button>
           </form>
           <div className="w-full h-10 -mt-4  flex justify-between items-center text-slate-300">
@@ -148,26 +149,26 @@ const SignIn = () => {
                 id="remMe"
               />
               <label htmlFor="remMe" className="text-sm ml-1">
-                Remember Me
+                {t("remember")}
               </label>
             </div>
             <div>
               <p className="text-sm">
-                <a href="/">Need Help?</a>
+                <a href="/">{t("help")}</a>
               </p>
             </div>
           </div>
           <p className="text-slate-400">
-            {isSign ? "New to NetFlix!" : "Already Registered?"}&nbsp;&nbsp;
+            {isSign ? t("newUser") : t("existed")}&nbsp;&nbsp;
             <span
               className="text-white cursor-pointer hover:underline"
               onClick={handleSign}
             >
-              {isSign ? "Sign Up Now" : "Sign In Now"}
+              {isSign ? t("signUp") : t("signInNow")}
             </span>
           </p>
           <p className="text-slate-400 text-xs mt-4 text-center">
-            Sign in is protected by Google reCAPTCHA to ensure you're not a bot
+            {t("footerContent")}
           </p>
         </div>
       </div>

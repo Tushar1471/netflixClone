@@ -1,32 +1,7 @@
 import { HOMEPAGE_URL, LOGO_URL } from "../../utils/URL/url";
-import { languages } from "../../utils/URL/url";
-import { useDispatch, useSelector } from "react-redux";
-import { addLanguage } from "../../utils/LanguageSlice/languageSlice";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 const Homepage = () => {
-  const data = languages[0]["en"];
-  const [stat, setStatic] = useState(data);
-  const dispatch = useDispatch();
-  const handleChange = (e) => {
-    languages
-      .map((item) => item)
-      .filter((store) => setStatic(store[e.target.value]));
-  };
-  dispatch(addLanguage(stat));
-  useEffect(() => {
-    !languages && handleChange();
-  }, []);
-  const store = useSelector((store) => store.lang);
-  const {
-    signIn,
-    description,
-    priceStatics,
-    memberShipStatics,
-    placeHolder,
-    btnName,
-  } = store.languages[0].homePage;
-
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div className="w-[100%] h-[100vh] relative">
@@ -41,45 +16,44 @@ const Homepage = () => {
               <div className="w-6/12 h-10 bg-gray-800 rounded-md border">
                 <select
                   className="w-full h-full text-center bg-transparent text-white text-md"
-                  onChange={handleChange}
                   defaultValue={"en"}
+                  onChange={(e) => i18n.changeLanguage(e.target.value)}
                 >
                   <option value="en" className="bg-white text-black">
                     English
                   </option>
-                  <option value="hin" className="bg-white text-black">
+                  <option value="hi" className="bg-white text-black">
                     हिंदी
                   </option>
                   <option value="fr" className="bg-white text-black">
                     French
                   </option>
-                  <option value="chin" className="bg-white text-black">
-                    Chinese(Simplified)
-                  </option>
                 </select>
               </div>
               <div className="w-4/12 h-10">
                 <button className="w-full h-full bg-red-800 hover:bg-red-900 rounded-md text-white">
-                  <a href="/login">{signIn}</a>
+                  <a href="/login">{t("signInBtn")}</a>
                 </button>
               </div>
             </div>
           </div>
           <div className="w-6/12 p-4 mt-36 ml-32 text-white">
-            <p className="text-5xl  font-bold leading-[75px]">{description}</p>
-            <p className="text-3xl mt-5 mb-9">{priceStatics}</p>
-            <p className="text-md text-slate-400">{memberShipStatics}</p>
+            <p className="text-5xl  font-bold leading-[75px]">
+              {t("description")}
+            </p>
+            <p className="text-3xl mt-5 mb-9">{t("priceStatics")}</p>
+            <p className="text-md text-slate-400">{t("memberShipStatics")}</p>
             <div className="w-full h-16 flex justify-between mt-5">
               <div className="w-7/12 h-full bg-gray-900 rounded-md text-white">
                 <input
                   type="email"
                   className="rounded-md indent-4 w-full h-full bg-transparent"
-                  placeholder={placeHolder}
+                  placeholder={t("placeHolder")}
                 />
               </div>
               <div className="w-4/12 h-full rounded-lg bg-red-600 mr-10">
                 <button className="w-full  h-full text-xl font-bold flex justify-center items-center">
-                  {btnName}
+                  {t("btnName")}
                   <span className="material-symbols-outlined ml-2 text-xl">
                     arrow_forward_ios
                   </span>
@@ -89,7 +63,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-screen bg-black text-white"></div>
     </>
   );
 };

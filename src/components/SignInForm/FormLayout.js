@@ -1,6 +1,8 @@
 import SignIn from "../Form/SignIn";
 import Header from "../Header/Header";
+// import { useTranslation } from "react-i18next";
 const FormLayout = () => {
+  // const{t} = useTranslation();
   return (
     <>
       <div className="w-[100%] h-[150vh] relative">
@@ -20,9 +22,22 @@ const FormLayout = () => {
               <h1 className="text-lg">Questions?Call 000-800-919-1694</h1>
               <p>FAQ</p>
               <p>Privacy</p>
-              <select className="w-5/12 p-3 bg-slate-700 text-white">
-                <option value="English">English</option>
-              </select>
+              <div className="w-6/12 h-10 bg-gray-800 rounded-md border">
+                <select
+                  className="w-full h-full text-center bg-transparent text-white text-md"
+                  defaultValue={"en"}
+                >
+                  <option value="en" className="bg-white text-black">
+                    English
+                  </option>
+                  <option value="hin" className="bg-white text-black">
+                    हिंदी
+                  </option>
+                  <option value="fr" className="bg-white text-black">
+                    French
+                  </option>
+                </select>
+              </div>
             </div>
             <div className="w-3/12 p-2">
               <p>Help Center</p>

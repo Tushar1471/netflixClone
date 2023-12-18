@@ -4,13 +4,19 @@ const languageSlice = createSlice({
     name: "Language",
     initialState: {
         languages: null,
+        ShowResIdMovies: null,
+        allLanguages: null,
     },
     reducers: {
-        addLanguage: (state, action) => {
-            state.languages = action.payload;
-        }
+        addIdMovies: (state, action) => {
+            state.ShowResIdMovies = action.payload;
+        },
+        clearIdMovies: (state) => {
+            state.ShowResIdMovies = null;
+        },
+
     }
 })
 
-export const { addLanguage } = languageSlice.actions;
+export const { addIdMovies, clearIdMovies } = languageSlice.actions;
 export default languageSlice.reducer;

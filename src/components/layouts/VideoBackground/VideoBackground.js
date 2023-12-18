@@ -12,7 +12,7 @@ const VideoBackground = () => {
     item.type === "Trailer" ? newArr.push(item) : null
   );
 
-  const { key, name } = newArr[2];
+  const { key, name } = newArr[1];
 
   return (
     <>

@@ -52,7 +52,7 @@ const Header = () => {
           </a>
         </div>
         {user && (
-          <div className="w-10/12 flex justify-between mr-10">
+          <div className="w-10/12 flex justify-between mr-2">
             <div className="w-6/12 flex justify-evenly items-center">
               <div className="w-full h-10 flex justify-evenly items-center text-slate-100 font-sans text-sm font-semibold">
                 <a href="*">
