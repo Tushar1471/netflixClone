@@ -5,7 +5,7 @@ const Mcard = ({ image }) => {
     <>
       <div>
         <img
-          className="w-full h-full opacity-90 transition  hover:scale-90 rounded-sm"
+          className="w-full h-full transition  hover:scale-90 rounded-sm"
           src={`https://image.tmdb.org/t/p/w300/${image}`}
           alt="Random"
         />

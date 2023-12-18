@@ -4,7 +4,7 @@ const Homepage = () => {
   const { t, i18n } = useTranslation();
   return (
     <>
-      <div className="w-[100%] h-[100vh] relative">
+      <div className="w-[100%] h-[100vh] relative font-sans">
         <img className="w-full h-full" src={HOMEPAGE_URL} alt="Netflix" />
         <div className="w-full h-full bg-black absolute top-0 opacity-90 bg-gradient-to-t from-slate-700 to-slate-900"></div>
         <div className="w-full h-full absolute top-0 opacity-60">

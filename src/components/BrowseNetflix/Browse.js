@@ -78,7 +78,7 @@ const Browse = () => {
               <VideoBackground />
             </div>
           </div>
-          <div className="relative -top-[60px] flex justify-center">
+          <div className="relative -top-[65px] flex justify-center">
             <div className="w-full h-full  absolute -top-40">
               <MovieCards
                 title={"Upcoming Movies on Netflix"}

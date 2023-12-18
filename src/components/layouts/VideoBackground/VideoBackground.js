@@ -16,7 +16,7 @@ const VideoBackground = () => {
 
   return (
     <>
-      <div className="w-full bg-blue-200">
+      <div className="w-full">
         <VideoTitle data={key} />
         <div className="w-full h-full absolute top-0  bg-gradient-to-tr from-black px-12"></div>
         <div className="w-4/12 h-60 p-4  flex flex-col justify-evenly  absolute top-[380px] left-10">

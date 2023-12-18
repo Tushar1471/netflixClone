@@ -37,7 +37,6 @@ const MovieCards = ({
     );
     const getData = await fetchData.json();
     const newData = await getData.results;
-    // console.log(newData);
     await newData.filter((item) =>
       item.type === "Trailer" ? dispatch(addIdTrailers(item)) : null
     );
