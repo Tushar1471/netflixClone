@@ -29,13 +29,13 @@
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-200px);
+        transform: translateY(200px);
     }
     60% {
-        transform: translateY(-50px);
+        transform: translateY(50px);
     }
 }
 
 .animate-custom-bounce {
-    animation: custom-bounce 5s infinite;
+    animation: custom-bounce 6s infinite;
 }

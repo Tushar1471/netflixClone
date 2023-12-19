@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import FormLayout from "./SignInForm/FormLayout.js";
 import Homepage from "./HomePage/Homepage.js";
 import Browse from "./BrowseNetflix/Browse.js";
+import VideoPlayer from "./VideoPlayer/VideoPlayer.js";
 const Body = () => {
   const appRouter = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/browse/:id",
+      element: <VideoPlayer />,
     },
   ]);
   return (
