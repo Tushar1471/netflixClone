@@ -94,13 +94,15 @@ const SignIn = () => {
       <div className=" w-4/12 h-[60%]  mx-auto mt-10 bg-black px-16 py-16 opacity-70">
         <div className="p-2 ">
           <h1 className="text-white font-sans text-3xl font-semibold mb-1">
-            {isSign ? t("signInHeader") : t("signUpHeader")}
-          </h1>
+            {" "}
+            {isSign ? t("signInHeader") : t("signUpHeader")}{" "}
+          </h1>{" "}
           <form
             className="h-72 flex flex-col justify-evenly items-center"
             onSubmit={(e) => e.preventDefault()}
           >
             <div>
+              {" "}
               {!isSign && (
                 <input
                   ref={name}
@@ -111,7 +113,7 @@ const SignIn = () => {
                   spellCheck="false"
                   autoComplete="off"
                 />
-              )}
+              )}{" "}
               <input
                 ref={email}
                 className="w-full h-12 rounded-sm indent-3 border border-none outline-none mb-6 text-white bg-slate-600"
@@ -129,17 +131,18 @@ const SignIn = () => {
                 placeholder={t("password")}
                 autoComplete="off"
               />
-            </div>
+            </div>{" "}
             <p className="text-red-600 font-bold">
-              {isSign ? ErrorMsg : NewError}
-            </p>
+              {" "}
+              {isSign ? ErrorMsg : NewError}{" "}
+            </p>{" "}
             <button
               onClick={handleValidation}
               className="w-full p-4 bg-gradient-to-r from-red-900 to-orange-600 filter brightness-200 text-white rounded-md"
             >
-              {isSign ? t("inBtn") : t("upBtn")}
-            </button>
-          </form>
+              {isSign ? t("inBtn") : t("upBtn")}{" "}
+            </button>{" "}
+          </form>{" "}
           <div className="w-full h-10 -mt-4  flex justify-between items-center text-slate-300">
             <div className="flex justify-center items-center">
               <input
@@ -149,29 +152,32 @@ const SignIn = () => {
                 id="remMe"
               />
               <label htmlFor="remMe" className="text-sm ml-1">
-                {t("remember")}
-              </label>
-            </div>
+                {" "}
+                {t("remember")}{" "}
+              </label>{" "}
+            </div>{" "}
             <div>
               <p className="text-sm">
-                <a href="/">{t("help")}</a>
-              </p>
-            </div>
-          </div>
+                <a href="/"> {t("help")} </a>{" "}
+              </p>{" "}
+            </div>{" "}
+          </div>{" "}
           <p className="text-slate-400">
-            {isSign ? t("newUser") : t("existed")}&nbsp;&nbsp;
+            {" "}
+            {isSign ? t("newUser") : t("existed")}&nbsp;{" "}
             <span
               className="text-white cursor-pointer hover:underline"
               onClick={handleSign}
             >
-              {isSign ? t("signUp") : t("signInNow")}
-            </span>
-          </p>
+              {isSign ? t("signUp") : t("signInNow")}{" "}
+            </span>{" "}
+          </p>{" "}
           <p className="text-slate-400 text-xs mt-4 text-center">
-            {t("footerContent")}
-          </p>
-        </div>
-      </div>
+            {" "}
+            {t("footerContent")}{" "}
+          </p>{" "}
+        </div>{" "}
+      </div>{" "}
     </>
   );
 };

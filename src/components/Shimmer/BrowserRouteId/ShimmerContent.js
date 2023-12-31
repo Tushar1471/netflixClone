@@ -4,19 +4,21 @@ import { Link } from "react-router-dom";
 const ShimmerContent = () => {
   return (
     <>
-      <div className="w-full h-screen z-50 absolute bg-black  top-0 flex justify-center py-8">
-        <div className="w-2/6 h-full p-6 flex justify-center rounded-lg bg-slate-900 ">
-          <div className="w-full h-full  ">
-            <div className="w-full h-[40%] relative bg-gradient-to-br from-slate-700  rounded-lg bg-transparent">
+      <div className="w-full h-screen bg-black z-50  top-0 flex justify-center py-10">
+        <div className="w-2/6 h-full bg-gradient-to-t from-slate-950 flex justify-center rounded-lg">
+          <div className="w-full h-full flex flex-col justify-between ">
+            <div className="w-full h-[40%] relative bg-gradient-to-r from-slate-500">
               <Link
                 to={"/browse"}
-                className="w-10 h-10 opacity-50 absolute -right-10 -top-10 bg-gradient-to-br from-slate-800  rounded-[100vh] cursor-pointer "
+                className=" absolute -right-4 -top-6 cursor-pointer "
+                title="close"
               >
-                <span className="material-symbols-outlined text-white text-[40px]">
-                  cancel
+                <span className="material-symbols-outlined  text-white w-8 h-8 bg-slate-900 rounded-[100vh] flex justify-center items-center text-3xl">
+                  close
                 </span>
               </Link>
             </div>
+            <div className="w-full h-[55%] rounded-lg p-1"></div>
           </div>
         </div>
       </div>

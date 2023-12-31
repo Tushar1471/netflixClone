@@ -5,12 +5,15 @@ import { useDispatch } from "react-redux";
 import { addId } from "../../utils/MovieSlice/movieSlice";
 import { addIdTrailers } from "../../utils/MovieSlice/movieSlice";
 import { options } from "../../utils/URL/url";
+import { addTvTrailers } from "../../utils/MovieSlice/movieSlice";
 const MovieCards = ({
   title,
   popMovies,
   topRated,
   upcomingMovies,
   allMovies,
+  allTrendingMovies,
+  allTvSeries,
 }) => {
   const dispatch = useDispatch();
 
@@ -21,8 +24,20 @@ const MovieCards = ({
     );
     const getData = await fetchData.json();
     const newData = await getData.results;
-    await newData.filter((item) =>
+    newData.filter((item) =>
       item.type === "Trailer" ? dispatch(addIdTrailers(item)) : null
+    );
+  };
+
+  const fetchTvTrailer = async (trailerId) => {
+    const fetchData = await fetch(
+      "https://api.themoviedb.org/3/tv/" + trailerId + "/videos",
+      options
+    );
+    const getData = await fetchData.json();
+    const newData = await getData.results;
+    newData.filter((item) =>
+      item.type === "Trailer" ? dispatch(addTvTrailers(item)) : null
     );
   };
   return (
@@ -84,6 +99,32 @@ const MovieCards = ({
                 to={`/browse/${item.id}`}
                 onClick={() =>
                   dispatch(addId(item.id)) && fetchTrailer(item.id)
+                }
+              >
+                <Mcard image={item.poster_path} />
+              </Link>
+            ))}
+          {allTrendingMovies &&
+            allTrendingMovies.map((item) => (
+              <Link
+                className="w-2/12 h-full mr-3 shadow-lg shadow-slate-900 cursor-pointer transition hover:scale-90"
+                key={item.id}
+                to={`/browse/${item.id}`}
+                onClick={() =>
+                  dispatch(addId(item.id)) && fetchTrailer(item.id)
+                }
+              >
+                <Mcard image={item.poster_path} />
+              </Link>
+            ))}
+          {allTvSeries &&
+            allTvSeries.map((item) => (
+              <Link
+                className="w-2/12 h-full mr-3 shadow-lg shadow-slate-900 cursor-pointer transition hover:scale-90"
+                key={item.id}
+                to={`/browse/${item.id}`}
+                onClick={() =>
+                  dispatch(addId(item.id)) && fetchTvTrailer(item.id)
                 }
               >
                 <Mcard image={item.poster_path} />

@@ -12,6 +12,9 @@ const moviesSlice = createSlice({
         checkId: null,
         showDetails: null,
         showIdTrailers: null,
+        showTrendingMovies: null,
+        showTvSeries: null,
+        showTvTrailers: null,
     },
     reducers: {
         addMovies: (state, action) => {
@@ -47,11 +50,30 @@ const moviesSlice = createSlice({
         clearIdTrailers: (state) => {
             state.showIdTrailers = null;
         },
+        addTrendingMovies: (state, action) => {
+            state.showTrendingMovies = action.payload;
+        },
+        clearTrendingMovies: (state) => {
+            state.showTrendingMovies = null;
+        },
+        addTvSeries: (state, action) => {
+            state.showTvSeries = action.payload;
+        },
+        clearTvSeries: (state) => {
+            state.showTvSeries = null;
+        },
+        addTvTrailers: (state, action) => {
+            state.showTvTrailers = action.payload;
+        },
+        clearTvTrailers: (state) => {
+            state.showTvTrailers = null;
+        }
+
 
 
     }
 });
 
 
-export const { addMovies, addVideos, addPopMovies, addTopRated, addUpMovies, addId, addDetails, clearDetails, clearId, addIdTrailers, clearIdTrailers } = moviesSlice.actions;
+export const { addMovies, addVideos, addPopMovies, addTopRated, addUpMovies, addId, addDetails, clearDetails, clearId, addIdTrailers, clearIdTrailers, addTrendingMovies, clearTrendingMovies, addTvSeries, clearTvSeries, addTvTrailers, clearTvTrailers } = moviesSlice.actions;
 export default moviesSlice.reducer;

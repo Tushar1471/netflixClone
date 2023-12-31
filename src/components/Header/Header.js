@@ -85,12 +85,6 @@ const Header = () => {
                 <a href="*">
                   <span>{user.displayName}</span>
                 </a>
-
-                <a href="*">
-                  <span className="text-2xl material-symbols-outlined">
-                    notifications
-                  </span>
-                </a>
                 <a href="*" className="flex justify-center items-center">
                   <p className="w-9 h-9">
                     <img

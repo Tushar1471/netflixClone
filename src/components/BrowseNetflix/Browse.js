@@ -12,17 +12,25 @@ import {
   clearId,
   clearIdTrailers,
 } from "../../utils/MovieSlice/movieSlice.js";
+import { useTrendingMovies } from "../../hooks/TrendingMoviesDay/useTrendingMovies.js";
 import { useDispatch } from "react-redux";
+import { useFetchTvSeries } from "../../hooks/TVSERIES/useFetchTvSeries.js";
+import { clearTvTrailers } from "../../utils/MovieSlice/movieSlice.js";
 const Browse = () => {
   const dispatch = useDispatch();
   useFetchMovies();
   usePopularMovies();
   useTopRated();
   useUpcomingMovies();
+  useTrendingMovies();
+  useFetchTvSeries();
   const popMovies = useSelector((movie) => movie.movies?.nowPopularMovies);
   const topRated = useSelector((topRated) => topRated.movies?.nowTopRated);
   const upcomingMovies = useSelector(
     (upcoming) => upcoming.movies?.nowUpcoming
+  );
+  const CHECK_TRENDING_MOVIES = useSelector(
+    (store) => store.movies?.showTrendingMovies
   );
   const allMovies = useSelector((all) => all.movies?.nowPlayingMovies);
   const CHECK_REDUX_ID = useSelector((store) => store.movies?.checkId);
@@ -30,6 +38,8 @@ const Browse = () => {
     (store) => store.movies?.showIdTrailers
   );
   const CHECK_MOVIE_DETAIL = useSelector((store) => store.movies?.showDetails);
+  const CHECK_TV_SERIES = useSelector((store) => store.movies?.showTvSeries);
+  const SHOW_TV_TRAILERS = useSelector((store) => store.movies?.showTvTrailers);
 
   useEffect(() => {
     if (CHECK_REDUX_ID) CHECK_REDUX_ID && dispatch(clearId());
@@ -39,6 +49,9 @@ const Browse = () => {
   }, []);
   useEffect(() => {
     if (CHECK_MOVIE_DETAIL) CHECK_MOVIE_DETAIL && dispatch(clearDetails());
+  }, []);
+  useEffect(() => {
+    if (SHOW_TV_TRAILERS) SHOW_TV_TRAILERS && dispatch(clearTvTrailers());
   }, []);
 
   return (
@@ -55,11 +68,19 @@ const Browse = () => {
         <div className="relative -top-[65px] flex justify-center">
           <div className="w-full h-full  absolute -top-40">
             <MovieCards
+              title={"Trending Movies"}
+              allTrendingMovies={CHECK_TRENDING_MOVIES}
+            />
+            <MovieCards
               title={"Upcoming Movies on Netflix"}
               upcomingMovies={upcomingMovies}
             />
             <MovieCards title={"Top Rated"} topRated={topRated} />
             <MovieCards title={"Popular on Netflix"} popMovies={popMovies} />
+            <MovieCards
+              title={"Popular TV Series"}
+              allTvSeries={CHECK_TV_SERIES}
+            />
             <MovieCards title={"All Movies"} allMovies={allMovies} />
           </div>
         </div>
